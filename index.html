@@ -5,119 +5,322 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Economic Scenario Simulator</title>
     <style>
-        /* Place your CSS styles here */
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            background-color: #FFFFFF;
+            background-image: linear-gradient(to bottom, #FFFFFF, #FFFFFF);
+            background-size: 100% 300px;
+            background-position: 0% 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #000000;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .headline {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            color: #FF9900;
+        }
+
+        .subheadline {
+            font-size: 24px;
+            margin-bottom: 32px;
+            color: #333333;
+        }
+
+        .cta-button {
+            background-color: #FF9900;
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #e68a00;
+            transform: scale(1.05);
+        }
+
+        .scroll-down-arrow {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-down-arrow svg {
+            fill: #FF9900;
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Benefit Section */
+        .benefit-section {
+            padding: 80px 0;
+            background-color: #FFFFFF;
+        }
+
+        .section-heading {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background-color: #FFFFFF;
+            border: 1px solid #DDDDDD;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .benefit-heading {
+            font-size: 20px; /* Increased size */
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .benefit-description {
+            font-size: 16px; /* Increased size */
+            color: #666666;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 80px 0;
+            background-image: linear-gradient(to bottom, #f7f7f7, #fff);
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-heading {
+            font-size: 20px; /* Increased size */
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .feature-description {
+            font-size: 16px; /* Increased size */
+            color: #666666;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 60px 0;
+            background-color: #f7f7f7;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testimonial {
+            background-color: #FFFFFF;
+            border: 1px solid #DDDDDD;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            margin: 0 20px;
+            animation: slideIn 1s ease-out;
+        }
+
+        .testimonial span {
+            display: block;
+            margin-top: 10px;
+            font-style: italic;
+            color: #666666;
+        }
+
+        /* Animations */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="hero-section">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="headline">Simulate Economic Scenarios in Seconds</h1>
-                <p class="subheadline">Turn raw data into clear, powerful simulations for faster, better policy decisions.</p>
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1 class="headline">Simulate Economic Scenarios in Seconds</h1>
+            <p class="subheadline">Turn raw data into clear, powerful simulations for faster, better policy decisions.</p>
+            <div class="cta-buttons">
+                <button class="cta-button">Start Your Free Trial</button>
+                <button class="cta-button">Learn More</button>
             </div>
             <div class="scroll-down-arrow">
                 <svg viewBox="0 0 24 24" width="24" height="24">
-                    <path d="M12 2L2 7l10 5 10-5z" fill="#FF9900" />
+                    <path d="M12 2L2 7l10 5 10-5z" fill="#FF9900"></path>
                 </svg>
             </div>
         </div>
-    </div>
+    </header>
 
-    <div class="benefit-section">
+    <section class="benefit-section">
         <h2 class="section-heading">Why Choose Our Simulation Tool?</h2>
         <div class="benefit-grid">
             <div class="benefit-card">
-                <div class="icon-container">
-                    <svg viewBox="0 0 24 24" width="24" height="24">
-                        <path d="M12 2L2 7l10 5 10-5z" fill="#FF9900" />
-                    </svg>
-                </div>
                 <h3 class="benefit-heading">Real-time simulation results for instant policy insights</h3>
                 <p class="benefit-description">Get instant insights into policy scenarios with our real-time simulation results.</p>
             </div>
             <div class="benefit-card">
-                <div class="icon-container">
-                    <svg viewBox="0 0 24 24" width="24" height="24">
-                        <path d="M12 2L2 7l10 5 10-5z" fill="#FF9900" />
-                    </svg>
-                </div>
                 <h3 class="benefit-heading">Simple, intuitive interface for all levels of expertise</h3>
                 <p class="benefit-description">Our interface is designed to be easy to use, regardless of your level of expertise.</p>
             </div>
             <div class="benefit-card">
-                <div class="icon-container">
-                    <svg viewBox="0 0 24 24" width="24" height="24">
-                        <path d="M12 2L2 7l10 5 10-5z" fill="#FF9900" />
-                    </svg>
-                </div>
                 <h3 class="benefit-heading">Scenario analysis to guide smarter, more effective decisions</h3>
                 <p class="benefit-description">Our scenario analysis tools help you make smarter, more effective decisions.</p>
             </div>
         </div>
-    </div>
+    </section>
 
     <section class="features-section">
         <h2 class="section-heading">Key Features</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <div class="icon-container">
-                    <svg viewBox="0 0 24 24" width="24" height="24">
-                        <path d="M12 2L2 7l10 5 10-5z" fill="#FF9900" />
-                    </svg>
-                </div>
                 <h3 class="feature-heading">Advanced Scenario Modeling</h3>
                 <p class="feature-description">Visualize different economic outcomes and adjust variables to explore policy impacts in real time.</p>
             </div>
             <div class="feature-card">
-                <div class="icon-container">
-                    <svg viewBox="0 0 24 24" width="24" height="24">
-                        <path d="M12 2L2 7l10 5 10-5z" fill="#FF9900" />
-                    </svg>
-                </div>
                 <h3 class="feature-heading">Data Integration</h3>
                 <p class="feature-description">Seamlessly import large datasets from various sources, making data-driven decisions effortless.</p>
             </div>
             <div class="feature-card">
-                <div class="icon-container">
-                    <svg viewBox="0 0 24 24" width="24" height="24">
-                        <path d="M12 2L2 7l10 5 10-5z" fill="#FF9900" />
-                    </svg>
-                </div>
-                <h3 class="feature-heading">Customizable Dashboards</h3>
-                <p class="feature-description">Tailor your dashboards to focus on key economic indicators and get actionable insights instantly.</p>
+                <h3 class="feature-heading">User-Friendly Dashboard</h3>
+                <p class="feature-description">Navigate through an intuitive interface designed for ease of use and efficient analysis.</p>
             </div>
         </div>
     </section>
-    
+
     <section class="testimonials">
-        <div class="container">
-            <h2>What Our Users Say</h2>
-            <div class="testimonial-slider">
-                <div class="testimonial">
-                    <p>"This simulation tool has been a game-changer for our policy analysis. We can now predict outcomes in minutes and make data-backed decisions with confidence."</p>
-                    <span>— Dr. Sofia Abdul, Policy Analyst, Global Think Tank</span>
-                </div>
-                <div class="testimonial">
-                    <p>"The ease of use and real-time results allow us to stay ahead of policy changes and adjust our strategies on the fly. Highly recommended!"</p>
-                    <span>— John Davies, Senior Economist, Institute for Economic Research</span>
-                </div>
+        <h2 class="section-heading">What Our Users Say</h2>
+        <div class="testimonial-slider">
+            <div class="testimonial">
+                <p>"This tool has revolutionized our approach to policy analysis. The intuitive design and powerful simulations save us hours of work each week."</p>
+                <span>- Alex R., Policy Analyst</span>
             </div>
-        </div>
-    </section>
-    
-    <section class="cta-section">
-        <div class="container">
-            <h2>Transform Your Policy Strategy with Advanced Simulations!</h2>
-            <p>Get started with our simulation tool today and discover the power of data-driven decision making.</p>
-            <div class="cta-buttons">
-                <button class="cta-button">Start Your Free Trial</button>
-                <button class="cta-button">Learn More</button>
+            <div class="testimonial">
+                <p>"With the advanced scenario modeling, we're now able to make more informed decisions faster than ever before. A game-changer for our team!"</p>
+                <span>- Maria K., Economic Researcher</span>
+            </div>
+            <div class="testimonial">
+                <p>"The data integration feature has been incredibly useful. It’s seamless and easy to use, which has greatly improved our workflow."</p>
+                <span>- Daniel S., Data Scientist</span>
             </div>
         </div>
     </section>
 
     <script>
-        // Insert your JavaScript code here
+        // Add functionality to carousel slider
+        let currentIndex = 0;
+        const testimonials = document.querySelectorAll('.testimonial-slider .testimonial');
+        const totalTestimonials = testimonials.length;
+
+        function showNextTestimonial() {
+            testimonials[currentIndex].style.opacity = '0';
+            currentIndex = (currentIndex + 1) % totalTestimonials;
+            testimonials[currentIndex].style.opacity = '1';
+        }
+
+        setInterval(showNextTestimonial, 3000); // Change testimonial every 3 seconds
     </script>
 </body>
 </html>
